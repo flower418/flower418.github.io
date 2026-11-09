@@ -1,0 +1,99 @@
+baseURL: https://flower418.github.io/
+languageCode: en-us
+title: Sunflower's Log
+theme: PaperMod
+
+# 中文按字计数，阅读时间才准
+hasCJKLanguage: true
+enableRobotsTXT: true
+enableEmoji: true
+
+pagination:
+  pagerSize: 10
+
+minify:
+  disableXML: true
+
+# JSON 给站内搜索用
+outputs:
+  home: [HTML, RSS, JSON]
+
+params:
+  env: production
+  title: Sunflower's Log
+  description: "Sunflower's learning notes."
+  author: Sunflower
+  mainSections: [posts]
+
+  defaultTheme: auto        # 跟随系统明暗
+  ShowReadingTime: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowShareButtons: false
+  ShowWordCount: false
+  ShowToc: true             # 文章自动生成目录
+  TocOpen: false
+  ShowRssButtonInSectionTermList: true
+
+  homeInfoParams:
+    Title: "🌻 Welcome to Sunflower's Log"
+    Content: "Hi, this is Sunflower. I'm documenting my learning notes in this blog."
+
+  socialIcons:
+    - name: github
+      url: https://github.com/flower418
+    - name: rss
+      url: index.xml
+
+  assets:
+    favicon: /favicon.svg
+    favicon16x16: /favicon.svg
+    favicon32x32: /favicon.svg
+    apple_touch_icon: /favicon.svg
+
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    threshold: 0.4
+    minMatchCharLength: 1
+    keys: [title, permalink, summary, content]
+
+menu:
+  main:
+    - identifier: posts
+      name: Posts
+      url: /
+      weight: 1
+    - identifier: archives
+      name: Archive
+      url: /archives/
+      weight: 2
+    - identifier: search
+      name: Search
+      url: /search/
+      weight: 3
+    - identifier: tags
+      name: Tags
+      url: /tags/
+      weight: 4
+    - identifier: about
+      name: About
+      url: /about/
+      weight: 5
+
+markup:
+  goldmark:
+    # 让 $...$ / $$...$$ 原样交给 MathJax，避免 Markdown 把下划线、反斜杠吃掉
+    extensions:
+      passthrough:
+        enable: true
+        delimiters:
+          block:
+            - ['\[', '\]']
+            - ['$$', '$$']
+          inline:
+            - ['\(', '\)']
+            - ['$', '$']
+    renderer:
+      unsafe: true
